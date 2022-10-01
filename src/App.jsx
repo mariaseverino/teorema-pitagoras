@@ -7,33 +7,34 @@ function App() {
     const [b, setB] = useState(0);
     const [c, setC] = useState(0);
     const [resultado, setreRultado] = useState(null);
+    const [faltaValor, setFaltaValor] = useState("");
 
     const [selectA, setSelectA] = useState(false);
     const [selectB, setSelectB] = useState(false);
     const [selectC, setSelectC] = useState(false);
 
     function handleSubmit() {
-        // if (a === 0) {
-        //     alert("a");
+        setSelectA(false);
+        setSelectB(false);
+        setSelectC(false);
 
-        //     setA(0);
-        // }
-        // if (b === 0) {
-        //     alert("b");
-        //     setB(0);
-        // }
-        // if (c === 0) {
-        //     alert("c");
-
-        //     setC(0);
-        // }
         let url = `https://pitagoras--maria-ritarita7.repl.co/calcula?a=${a}&b=${b}&c=${c}`;
 
-        console.log(url);
         axios
             .get(url)
             .then(({ data }) => {
                 setreRultado(data.resultado);
+
+                if (a == 0) {
+                    setFaltaValor("a");
+                    setSelectA(true);
+                } else if (b == 0) {
+                    setFaltaValor("b");
+                    setSelectB(true);
+                } else if (c == 0) {
+                    setFaltaValor("c");
+                    setSelectC(true);
+                }
             })
             .catch((error) => console.log(error));
     }
@@ -130,7 +131,7 @@ function App() {
                             resultado != null ? "aparece" : "nao-aparece"
                         }
                     >
-                        O resultado é {resultado}
+                        O resultado de {faltaValor} é {resultado}
                     </p>
                 </div>
             </div>

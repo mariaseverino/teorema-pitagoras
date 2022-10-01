@@ -88,6 +88,11 @@ button {
     font-size: larger;
     margin-bottom: 70px;
 }
+
+button:hover {
+    background-color: #302031;
+}
+
 span {
     margin-right: 10px;
     margin-left: 20px;
