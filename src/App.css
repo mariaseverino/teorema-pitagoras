@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+}
+.blocao {
+    width: 100vw;
+    height: 100vh;
+    background: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bloco {
+    width: 800px;
+    display: flex;
+    place-items: center;
+    height: 500px;
+    background-color: white;
+
+    border-radius: 8px;
+}
+
+.bloquinho {
+    width: 50%;
+    height: 50%;
+}
+
+.bloco-triangulo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.triangulo {
+    position: relative;
+    display: flex;
+}
+.bloco-conta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 20px;
+}
+
+#linha-vertical {
+    height: 194px;
+    border-right-width: 4px;
+    border-right-style: solid;
+}
+#linha-horizontal {
+    width: 192px;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+}
+#linha-diagonal {
+    height: 194px;
+    border-left-width: 6px;
+    border-left-style: solid;
+    transform: skew(45deg);
+    position: absolute;
+    left: 97px;
+    /* top: -2px; */
+}
+
+input {
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2px;
+    border-radius: 4px;
+    width: 60px;
+    height: 25px;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 70px;
+    /* margin-bottom: 20px; */
+}
+button {
+    padding: 12px 32px;
+    font-family: "Roboto", sans-serif;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #674d69;
+    color: white;
+    background-color: #3e2d40;
+    font-size: larger;
+    margin-bottom: 70px;
+}
+span {
+    font-family: "Roboto", sans-serif;
+    margin-right: 10px;
+    margin-left: 20px;
+    font-size: x-large;
+}
+
+#spanA {
+    position: absolute;
+    top: 80px;
+    right: 160px;
+}
+
+#spanB {
+    position: absolute;
+    bottom: -25px;
+    left: 160px;
+}
+
+#spanC {
+    position: absolute;
+    left: 35px;
+}
+.corA {
+    border-color: #b7c9a9;
+    color: #b7c9a9;
+}
+
+.corB {
+    border-color: #ffd452;
+    color: #ffd452;
+}
+
+.corC {
+    border-color: #ff7c70;
+    color: #ff7c70;
+}
+
+.normalCor {
+    border-color: #674d69;
+    color: #674d69;
+}
+
+.nao-aparece {
+    display: none;
+}
+.aparece {
+    display: flex;
+}
+
+#resultado {
+    position: absolute;
+    bottom: -15px;
+    font-size: x-large;
+    color: #4b4b4b;
+}
