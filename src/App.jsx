@@ -12,9 +12,24 @@ function App() {
     const [selectB, setSelectB] = useState(false);
     const [selectC, setSelectC] = useState(false);
 
-    const url = `https://pitagoras--maria-ritarita7.repl.co/calcula?a=${a}&b=${b}&c=${c}`;
-
     function handleSubmit() {
+        // if (a === 0) {
+        //     alert("a");
+
+        //     setA(0);
+        // }
+        // if (b === 0) {
+        //     alert("b");
+        //     setB(0);
+        // }
+        // if (c === 0) {
+        //     alert("c");
+
+        //     setC(0);
+        // }
+        let url = `https://pitagoras--maria-ritarita7.repl.co/calcula?a=${a}&b=${b}&c=${c}`;
+
+        console.log(url);
         axios
             .get(url)
             .then(({ data }) => {
@@ -65,8 +80,11 @@ function App() {
                             }}
                             // className="corA"
                             className={selectA ? "corA" : "normalCor"}
-                            onChange={(event) => setA(event.target.value)}
-                            // value={a}
+                            onChange={(event) => {
+                                event.target.value != ""
+                                    ? setA(event.target.value)
+                                    : setA(0);
+                            }}
                         />
                         <span className={selectB ? "corB" : "normalCor"}>
                             b:
@@ -80,8 +98,11 @@ function App() {
                                 setSelectC(false);
                             }}
                             className={selectB ? "corB" : "normalCor"}
-                            onChange={(event) => setB(event.target.value)}
-                            // value={b}
+                            onChange={(event) => {
+                                event.target.value != ""
+                                    ? setB(event.target.value)
+                                    : setB(0);
+                            }}
                         />
                         <span className={selectC ? "corC" : "normalCor"}>
                             c:
@@ -95,8 +116,11 @@ function App() {
                                 setSelectC(true);
                             }}
                             className={selectC ? "corC" : "normalCor"}
-                            onChange={(event) => setC(event.target.value)}
-                            // value={c}
+                            onChange={(event) => {
+                                event.target.value != ""
+                                    ? setC(event.target.value)
+                                    : setC(0);
+                            }}
                         />
                     </form>
                     <button onClick={handleSubmit}>Calcular</button>
