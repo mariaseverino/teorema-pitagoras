@@ -6,8 +6,8 @@ function App() {
     const [a, setA] = useState(0);
     const [b, setB] = useState(0);
     const [c, setC] = useState(0);
-    const [resultado, setreRultado] = useState(null);
-    const [faltaValor, setFaltaValor] = useState("");
+    const [resultado, setResultado] = useState(false);
+    const [dados, setDados] = useState("");
 
     const [selectA, setSelectA] = useState(false);
     const [selectB, setSelectB] = useState(false);
@@ -17,31 +17,40 @@ function App() {
         setSelectA(false);
         setSelectB(false);
         setSelectC(false);
+        setResultado(false);
 
         let url = `https://pitagoras--maria-ritarita7.repl.co/calcula?a=${a}&b=${b}&c=${c}`;
 
         axios
             .get(url)
             .then(({ data }) => {
-                setreRultado(data.resultado);
-
-                if (a == 0) {
-                    setFaltaValor("a");
-                    setSelectA(true);
-                } else if (b == 0) {
-                    setFaltaValor("b");
-                    setSelectB(true);
-                } else if (c == 0) {
-                    setFaltaValor("c");
-                    setSelectC(true);
+                if (data.retangulo == true) {
+                    if (a == 0) {
+                        setSelectA(true);
+                    } else if (b == 0) {
+                        setSelectB(true);
+                    } else if (c == 0) {
+                        setSelectC(true);
+                    }
+                    setDados(data);
+                    setResultado(data.retangulo);
+                } else {
+                    alert(data.motivo);
                 }
             })
             .catch((error) => console.log(error));
     }
 
     return (
-        <div className="blocao">
+        <div className="tela">
+            <h1>Calculadora do Teorema de Pitágoras</h1>
+
             <div className="bloco">
+                <p className="instrucao">
+                    Insira dois valores para calcular o lado que falta do
+                    triangulo.
+                </p>
+
                 <div className="bloquinho bloco-triangulo">
                     <span id="spanA" className={selectA ? "corA" : "normalCor"}>
                         a
@@ -79,7 +88,6 @@ function App() {
                                 setSelectB(false);
                                 setSelectC(false);
                             }}
-                            // className="corA"
                             className={selectA ? "corA" : "normalCor"}
                             onChange={(event) => {
                                 event.target.value != ""
@@ -128,10 +136,10 @@ function App() {
                     <p
                         id="resultado"
                         className={
-                            resultado != null ? "aparece" : "nao-aparece"
+                            resultado == true ? "aparece" : "nao-aparece"
                         }
                     >
-                        O resultado de {faltaValor} é {resultado}
+                        O valor de {dados.valorQFalta} é {dados.resultado}
                     </p>
                 </div>
             </div>
