@@ -6,7 +6,6 @@ function App() {
     const [a, setA] = useState(0);
     const [b, setB] = useState(0);
     const [c, setC] = useState(0);
-    const [resultado, setResultado] = useState(false);
     const [dados, setDados] = useState("");
 
     const [selectA, setSelectA] = useState(false);
@@ -17,9 +16,8 @@ function App() {
         setSelectA(false);
         setSelectB(false);
         setSelectC(false);
-        setResultado(false);
 
-        let url = `https://pitagoras--maria-ritarita7.repl.co/calcula?a=${a}&b=${b}&c=${c}`;
+        let url = `https://maria-apitagoras.herokuapp.com/calcula?a=${a}&b=${b}&c=${c}`;
 
         axios
             .get(url)
@@ -32,11 +30,8 @@ function App() {
                     } else if (c == 0) {
                         setSelectC(true);
                     }
-                    setDados(data);
-                    setResultado(data.retangulo);
-                } else {
-                    alert(data.motivo);
                 }
+                setDados(data);
             })
             .catch((error) => console.log(error));
     }
@@ -136,10 +131,18 @@ function App() {
                     <p
                         id="resultado"
                         className={
-                            resultado == true ? "aparece" : "nao-aparece"
+                            dados.retangulo == true ? "aparece" : "nao-aparece"
                         }
                     >
                         O valor de {dados.valorQFalta} é {dados.resultado}
+                    </p>
+                    <p
+                        id="erro"
+                        className={
+                            dados.retangulo == false ? "aparece" : "nao-aparece"
+                        }
+                    >
+                        {dados.motivo}
                     </p>
                 </div>
             </div>
