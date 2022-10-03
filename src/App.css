@@ -171,3 +171,8 @@ span {
     font-size: large;
     color: #fa5546;
 }
+
+footer {
+    position: absolute;
+    bottom: 35px;
+}

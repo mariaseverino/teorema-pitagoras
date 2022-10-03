@@ -146,6 +146,15 @@ function App() {
                     </p>
                 </div>
             </div>
+
+            <footer className="footer">
+                <p>
+                    Feito com 💜 por{" "}
+                    <a href="https://github.com/mariaseverino">
+                        Maria Rita Severino
+                    </a>
+                </p>
+            </footer>
         </div>
     );
 }
